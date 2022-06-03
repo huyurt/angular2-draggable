@@ -1,0 +1,33 @@
+<div class="iframe-drag-bounds" #dragBounds id="dragBounds">
+  <div class="iframe-resize-container"
+       ngResizable
+       rzHandles="n,s,e,w,se,sw"
+       ngDraggable
+       rzContainment="#dragBounds"
+       [bounds]="dragBounds"
+       [inBounds]="true"
+       [rzMinWidth]="20"
+       [rzMinHeight]="20"
+       [preventDefaultEvent]="true"
+       [position]="{ x: 400, y: 300 }"
+       style="width: 250px; height: 100px;"
+  >
+    <span>Bottom Component</span>
+  </div>
+  <div class="iframe-resize-container"
+       ngResizable
+       rzHandles="n,s,e,w,se,sw"
+       ngDraggable
+       rzContainment="#dragBounds"
+       [bounds]="dragBounds"
+       [inBounds]="true"
+       [rzMinWidth]="20"
+       [rzMinHeight]="20"
+       [preventDefaultEvent]="true"
+       [position]="{ x: 500, y: 200 }"
+       style="width: 200px; height: 300px;"
+  >
+    <span>Top Component</span>
+  </div>
+</div>
+

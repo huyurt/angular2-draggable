@@ -1,5 +1,5 @@
 {
-  "name": "angular2-draggable",
+  "name": "angular2-draggable-zi",
   "version": "2.3.2",
   "author": "Xie, Ziyu",
   "license": "MIT",
@@ -12,11 +12,11 @@
     "resizable"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/xieziyu/angular2-draggable.git"
+    "type": "git",
+    "url": "https://github.com/huyurt/angular2-draggable.git"
   },
   "homepage": "https://xieziyu.github.io/angular2-draggable",
-  "bugs": "https://github.com/xieziyu/angular2-draggable/issues",
+  "bugs": "https://github.com/huyurt/angular2-draggable/issues",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || >=6.0.0",
     "@angular/core": "^6.0.0-rc.0 || >=6.0.0"

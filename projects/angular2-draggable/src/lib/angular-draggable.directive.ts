@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Directive, ElementRef, Renderer2,
   Input, Output, OnInit, HostListener,
@@ -77,6 +78,9 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
 
   /** Lock axis: 'x' or 'y' */
   @Input() lockAxis: string = null;
+
+  /** Use transform method for movement */
+  @Input() useTransform = false;
 
   /** Emit position offsets when moving */
   @Output() movingOffset = new EventEmitter<IPosition>();
@@ -200,13 +204,18 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
       translateY = Math.round(translateY / this.gridSize) * this.gridSize;
     }
 
-    let value = `translate(${ Math.round(translateX) }px, ${ Math.round(translateY) }px)`;
+    if (this.useTransform) {
+      let value = `translate(${ Math.round(translateX) }px, ${ Math.round(translateY) }px)`;
 
-    this.renderer.setStyle(this.el.nativeElement, 'transform', value);
-    this.renderer.setStyle(this.el.nativeElement, '-webkit-transform', value);
-    this.renderer.setStyle(this.el.nativeElement, '-ms-transform', value);
-    this.renderer.setStyle(this.el.nativeElement, '-moz-transform', value);
-    this.renderer.setStyle(this.el.nativeElement, '-o-transform', value);
+      this.renderer.setStyle(this.el.nativeElement, 'transform', value);
+      this.renderer.setStyle(this.el.nativeElement, '-webkit-transform', value);
+      this.renderer.setStyle(this.el.nativeElement, '-ms-transform', value);
+      this.renderer.setStyle(this.el.nativeElement, '-moz-transform', value);
+      this.renderer.setStyle(this.el.nativeElement, '-o-transform', value);
+    } else {
+      this.renderer.setStyle(this.el.nativeElement, 'top', `${ Math.round(translateY) }px`);
+      this.renderer.setStyle(this.el.nativeElement, 'left', `${ Math.round(translateX) }px`);
+    }
 
     // save current position
     this.currTrans.x = translateX;
