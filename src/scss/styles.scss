@@ -6,18 +6,27 @@
  * @license MIT
  */
 
-// Override Boostrap variables
-@import "bootstrap-variables";
+// Here you can add other styles
+.my-drag-bounds {
+  width: 1169px;
+  height: 827px;
+  border: 1px dashed #A4B7C1;
+  position: absolute;
+}
 
-// Import Bootstrap source files
-@import "node_modules/bootstrap/scss/bootstrap";
+.my-resize-container {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  overflow: hidden;
+  cursor: move;
+  border: 1px solid deepskyblue;
+}
 
-// Override core variables
-@import "core-variables";
+.my-resize-container:hover {
+  border: 1px solid #22C39E;
+}
 
-// Import core styles
-@import "core/core";
-
-// Custom styles
-@import "custom";
-@import "resizable";
+.ng-resizable-handle {
+  z-index: 90;
+}

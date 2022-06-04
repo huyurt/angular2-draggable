@@ -280,19 +280,19 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
 
       if (this.inBounds) {
         if (!result.top) {
-          this.tempTrans.y -= (elem.top - boundary.top) / this.scale;
+          this.tempTrans.y -= elem.top - boundary.top;
         }
 
         if (!result.bottom) {
-          this.tempTrans.y -= (elem.bottom - boundary.bottom) / this.scale;
+          this.tempTrans.y -= elem.bottom - boundary.bottom;
         }
 
         if (!result.right) {
-          this.tempTrans.x -= (elem.right - boundary.right) / this.scale;
+          this.tempTrans.x -= elem.right - boundary.right;
         }
 
         if (!result.left) {
-          this.tempTrans.x -= (elem.left - boundary.left) / this.scale;
+          this.tempTrans.x -= elem.left - boundary.left;
         }
 
         this.transform();

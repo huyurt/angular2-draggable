@@ -1,6 +1,6 @@
 {
   "name": "angular2-draggable-demo",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=4203",
@@ -19,7 +19,7 @@
     "compodoc": "compodoc -p projects/angular2-draggable/tsconfig.lib.json -d dist/docs/api-doc --theme stripe",
     "serve:doc": "compodoc -p projects/angular2-draggable/tsconfig.lib.json -s"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^7.1.4",
     "@angular/common": "^7.1.4",
