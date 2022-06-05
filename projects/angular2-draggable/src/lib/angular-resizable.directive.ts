@@ -112,6 +112,9 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
   /** Whether to prevent default event */
   @Input() preventDefaultEvent = true;
 
+  /** Use transform method for movement */
+  @Input() useTransform = false;
+
   /** emitted when start resizing */
   @Output() rzStart = new EventEmitter<IResizeEvent>();
 
