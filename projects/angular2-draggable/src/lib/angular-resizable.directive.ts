@@ -600,8 +600,8 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
       let transforms = nativeEl.getPropertyValue('transform').replace(/[^-\d,]/g, '').split(',');
 
       this._bounding = {};
-      this._bounding.width = el.clientWidth;
-      this._bounding.height = el.clientHeight;
+      this._bounding.width = el.getBoundingClientRect().width;
+      this._bounding.height = el.getBoundingClientRect().height;
       this._bounding.pr = parseInt(computed.getPropertyValue('padding-right'), 10);
       this._bounding.pb = parseInt(computed.getPropertyValue('padding-bottom'), 10);
       this._bounding.deltaL = this.el.nativeElement.offsetLeft - this._currPos.x;
