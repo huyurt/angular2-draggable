@@ -2,8 +2,9 @@
   <div class="div-drag-bounds" #dragBounds id="dragBounds">
     <div class="div-resize-container"
          ngResizable
-         rzHandles="n,s,e,w,se,sw"
+         rzHandles="n,s,e,w,se,sw,nw"
          ngDraggable
+         ngClosable
          rzContainment="#dragBounds"
          [bounds]="dragBounds"
          [inBounds]="true"
@@ -18,8 +19,9 @@
     </div>
     <div class="div-resize-container"
          ngResizable
-         rzHandles="n,s,e,w,se,sw"
+         rzHandles="n,s,e,w,se,sw,nw"
          ngDraggable
+         ngClosable
          rzContainment="#dragBounds"
          [bounds]="dragBounds"
          [inBounds]="true"

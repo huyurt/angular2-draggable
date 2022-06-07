@@ -34,7 +34,8 @@
               "src/scss/styles.scss",
               "src/prism-darcula.css",
               "node_modules/font-awesome/css/font-awesome.css",
-              "dist/angular2-draggable/css/resizable.min.css"
+              "dist/angular2-draggable/css/resizable.css",
+              "dist/angular2-draggable/css/closable.css"
             ],
             "scripts": [
               "node_modules/marked/lib/marked.js",

@@ -2,15 +2,26 @@ const sass = require('node-sass');
 const fs = require('fs');
 
 const SCSS_FILE = './projects/angular2-draggable/src/scss/resizable.scss';
+const SCSS_FILE2 = './projects/angular2-draggable/src/scss/closable.scss';
 const OUTPUT_PATH = './dist/angular2-draggable/css';
 
-const result = sass.renderSync({
+const resultResizable = sass.renderSync({
   file: SCSS_FILE,
   outputStyle: 'expanded'
 });
 
-const minResult = sass.renderSync({
+const minResultResizable = sass.renderSync({
   file: SCSS_FILE,
+  outputStyle: 'compressed'
+});
+
+const resultClosable = sass.renderSync({
+  file: SCSS_FILE2,
+  outputStyle: 'expanded'
+});
+
+const minResultClosable = sass.renderSync({
+  file: SCSS_FILE2,
   outputStyle: 'compressed'
 });
 
@@ -19,5 +30,7 @@ try {
 } catch(e) {
   // no need
 }
-fs.writeFileSync(OUTPUT_PATH + '/resizable.css', result.css);
-fs.writeFileSync(OUTPUT_PATH + '/resizable.min.css', minResult.css);
+fs.writeFileSync(OUTPUT_PATH + '/resizable.css', resultResizable.css);
+fs.writeFileSync(OUTPUT_PATH + '/resizable.min.css', minResultResizable.css);
+fs.writeFileSync(OUTPUT_PATH + '/closable.css', resultClosable.css);
+fs.writeFileSync(OUTPUT_PATH + '/closable.min.css', minResultClosable.css);

@@ -1,0 +1,19 @@
+@import 'variables';
+
+.ng-closable {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 5px 5px 6px;
+  color: black;
+  font-size: 20px;
+  line-height: 0.7;
+  background-color: #e8e7e7;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ng-closable:after {
+  display: inline-block;
+  content: "\00d7";
+}
