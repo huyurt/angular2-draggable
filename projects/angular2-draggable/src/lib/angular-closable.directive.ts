@@ -1,6 +1,5 @@
 import {AfterViewInit, Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges} from '@angular/core';
 import {CloseHandle} from './widgets/close-handle';
-import {ResizeHandle} from './widgets/resize-handle';
 import {fromEvent, Subscription} from 'rxjs';
 
 @Directive({
@@ -23,7 +22,7 @@ export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy, A
   ) {
   }
 
-  /** Disables the resizable if set to false. */
+  /** Disables the closable if set to false. */
   @Input() set ngClosable(v: any) {
     if (v !== undefined && v !== null && v !== '') {
       this._closable = !!v;
@@ -60,7 +59,7 @@ export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy, A
     }
   }
 
-  onMouseDown(event: MouseEvent | TouchEvent, handle: ResizeHandle) {
+  onMouseDown(event: MouseEvent | TouchEvent) {
     // skip right click;
     if (event instanceof MouseEvent && event.button === 2) {
       return;
@@ -77,7 +76,7 @@ export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy, A
     }
   }
 
-  onMouseUp(event: MouseEvent | TouchEvent, handle: ResizeHandle) {
+  onMouseUp(event: MouseEvent | TouchEvent) {
     // skip right click;
     if (event instanceof MouseEvent && event.button === 2) {
       return;

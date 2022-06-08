@@ -215,8 +215,8 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
     } else {
       translateX = translateX < 0 ? 0 : translateX;
       translateY = translateY < 0 ? 0 : translateY;
-      this.renderer.setStyle(this.el.nativeElement, 'top', `${ Math.round(translateY) }px`);
       this.renderer.setStyle(this.el.nativeElement, 'left', `${ Math.round(translateX) }px`);
+      this.renderer.setStyle(this.el.nativeElement, 'top', `${ Math.round(translateY) }px`);
     }
 
     // save current position
