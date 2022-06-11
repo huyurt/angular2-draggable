@@ -16,7 +16,7 @@ import { HelperBlock } from './widgets/helper-block';
 export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   private allowDrag = true;
   private moving = false;
-  private orignal: Position = null;
+  private original: Position = null;
   private oldTrans = new Position(0, 0);
   private tempTrans = new Position(0, 0);
   private currTrans = new Position(0, 0);
@@ -119,7 +119,7 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
   ngOnDestroy() {
     this.bounds = null;
     this.handle = null;
-    this.orignal = null;
+    this.original = null;
     this.oldTrans = null;
     this.tempTrans = null;
     this.currTrans = null;
@@ -172,8 +172,8 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
   }
 
   private moveTo(p: Position) {
-    if (this.orignal) {
-      p.subtract(this.orignal);
+    if (this.original) {
+      p.subtract(this.original);
       this.tempTrans.set(p);
       this.tempTrans.divide(this.scale);
       this.transform();
@@ -205,7 +205,7 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
     }
 
     if (this.useTransform) {
-      let value = `translate(${ Math.round(translateX) }px, ${ Math.round(translateY) }px)`;
+      let value = `translate(${Math.round(translateX)}px, ${Math.round(translateY)}px)`;
 
       this.renderer.setStyle(this.el.nativeElement, 'transform', value);
       this.renderer.setStyle(this.el.nativeElement, '-webkit-transform', value);
@@ -215,8 +215,8 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
     } else {
       translateX = translateX < 0 ? 0 : translateX;
       translateY = translateY < 0 ? 0 : translateY;
-      this.renderer.setStyle(this.el.nativeElement, 'left', `${ Math.round(translateX) }px`);
-      this.renderer.setStyle(this.el.nativeElement, 'top', `${ Math.round(translateY) }px`);
+      this.renderer.setStyle(this.el.nativeElement, 'left', `${Math.round(translateX)}px`);
+      this.renderer.setStyle(this.el.nativeElement, 'top', `${Math.round(translateY)}px`);
     }
 
     // save current position
@@ -252,16 +252,16 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
   }
 
   private subscribeEvents() {
-    this.draggingSub = fromEvent(document, 'mousemove', { passive: false }).subscribe(event => this.onMouseMove(event as MouseEvent));
-    this.draggingSub.add(fromEvent(document, 'touchmove', { passive: false }).subscribe(event => this.onMouseMove(event as TouchEvent)));
-    this.draggingSub.add(fromEvent(document, 'mouseup', { passive: false }).subscribe(() => this.putBack()));
+    this.draggingSub = fromEvent(document, 'mousemove', {passive: false}).subscribe(event => this.onMouseMove(event as MouseEvent));
+    this.draggingSub.add(fromEvent(document, 'touchmove', {passive: false}).subscribe(event => this.onMouseMove(event as TouchEvent)));
+    this.draggingSub.add(fromEvent(document, 'mouseup', {passive: false}).subscribe(() => this.putBack()));
     // checking if browser is IE or Edge - https://github.com/xieziyu/angular2-draggable/issues/153
     let isIEOrEdge = /msie\s|trident\//i.test(window.navigator.userAgent);
     if (!isIEOrEdge) {
       this.draggingSub.add(fromEvent(document, 'mouseleave', {passive: false}).subscribe(() => this.putBack()));
     }
-    this.draggingSub.add(fromEvent(document, 'touchend', { passive: false }).subscribe(() => this.putBack()));
-    this.draggingSub.add(fromEvent(document, 'touchcancel', { passive: false }).subscribe(() => this.putBack()));
+    this.draggingSub.add(fromEvent(document, 'touchend', {passive: false}).subscribe(() => this.putBack()));
+    this.draggingSub.add(fromEvent(document, 'touchcancel', {passive: false}).subscribe(() => this.putBack()));
   }
 
   private unsubscribeEvents() {
@@ -416,7 +416,7 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
       event.preventDefault();
     }
 
-    this.orignal = Position.fromEvent(event, this.getDragEl());
+    this.original = Position.fromEvent(event, this.getDragEl());
     this.pickUp();
   }
 
