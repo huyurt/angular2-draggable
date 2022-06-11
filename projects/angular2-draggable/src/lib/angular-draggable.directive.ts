@@ -23,6 +23,7 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
   private oldZIndex = '';
   private _zIndex = '';
   private needTransform = false;
+  private _bounds: HTMLElement = null;
 
   private draggingSub: Subscription = null;
 
@@ -40,7 +41,7 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
   @Input() handle: HTMLElement;
 
   /** Set the bounds HTMLElement */
-  @Input() bounds: HTMLElement;
+  @Input() bounds: string | HTMLElement = null;
 
   /** List of allowed out of bounds edges **/
   @Input() outOfBounds = {
@@ -109,6 +110,12 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
   }
 
   ngOnInit() {
+    if (typeof this.bounds === 'string') {
+      this._bounds = document.querySelector<HTMLElement>(this.bounds);
+    } else {
+      this._bounds = this.bounds;
+    }
+
     if (this.allowDrag) {
       let element = this.getDragEl();
       this.renderer.addClass(element, 'ng-draggable');
@@ -271,7 +278,7 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
 
   boundsCheck() {
     if (this.bounds) {
-      let boundary = this.bounds.getBoundingClientRect();
+      let boundary = this._bounds.getBoundingClientRect();
       let elem = this.el.nativeElement.getBoundingClientRect();
       let result = {
         'top': this.outOfBounds.top ? true : boundary.top < elem.top,
