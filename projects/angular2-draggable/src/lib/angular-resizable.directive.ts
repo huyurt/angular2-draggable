@@ -146,13 +146,6 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
     this.updateResizable();
   }
 
-  ngOnDestroy() {
-    this.removeHandles();
-    this._containment = null;
-    this._helperBlock.dispose();
-    this._helperBlock = null;
-  }
-
   ngAfterViewInit() {
     const elm = this.el.nativeElement;
     this._initSize = Size.getCurrent(elm);
@@ -161,6 +154,13 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
     this._currPos = Position.copy(this._initPos);
     this.updateAspectRatio();
     this.updateContainment();
+  }
+
+  ngOnDestroy() {
+    this.removeHandles();
+    this._containment = null;
+    this._helperBlock.dispose();
+    this._helperBlock = null;
   }
 
   /** A method to reset size */

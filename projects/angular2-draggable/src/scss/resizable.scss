@@ -84,3 +84,19 @@
   border-left: $handle-corner-size solid transparent;
 }
 
+.ng-movable {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 4px 5px 5px 6px;
+  color: black;
+  font-size: 15px;
+  line-height: 0.7;
+  cursor: move;
+}
+
+.ng-movable:after {
+  display: inline-block;
+  content: "\2725";
+}
+

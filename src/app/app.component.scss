@@ -42,3 +42,11 @@
 .ng-resizable-e, .ng-resizable-w {
   width: 9px;
 }
+
+.ng-movable {
+  z-index: 90;
+}
+
+.ng-closable {
+  z-index: 90;
+}
