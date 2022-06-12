@@ -62,6 +62,7 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
     this.renderer.setStyle(this.el.nativeElement, 'z-index', setting);
     this._zIndex = setting;
   }
+
   /** Whether to limit the element stay in the bounds */
   @Input() inBounds = false;
 
@@ -423,6 +424,9 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
       event.preventDefault();
     }
 
+    if (this.useTransform === false) {
+      this.oldTrans.setFromPosition(this.el);
+    }
     this.original = Position.fromEvent(event, this.getDragEl());
     this.pickUp();
   }

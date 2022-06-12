@@ -1,3 +1,5 @@
+import { ElementRef } from '@angular/core';
+
 export interface IPosition {
   x: number;
   y: number;
@@ -96,6 +98,12 @@ export class Position implements IPosition {
   set(p: IPosition) {
     this.x = p.x;
     this.y = p.y;
+    return this;
+  }
+
+  setFromPosition(el: ElementRef) {
+    this.x = parseInt(el.nativeElement.style.getPropertyValue('left'), 10);
+    this.y = parseInt(el.nativeElement.style.getPropertyValue('top'), 10);
     return this;
   }
 }
