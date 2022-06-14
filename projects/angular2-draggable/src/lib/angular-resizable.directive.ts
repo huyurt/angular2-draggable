@@ -154,6 +154,7 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
     this._currPos = Position.copy(this._initPos);
     this.updateAspectRatio();
     this.updateContainment();
+    this.fixInitSize();
   }
 
   ngOnDestroy() {
@@ -640,6 +641,28 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
       } else if (Array.isArray(this.rzGrid)) {
         this._gridSize = { x: this.rzGrid[0], y: this.rzGrid[1] };
       }
+    }
+  }
+
+  fixInitSize() {
+    this.getBounding();
+
+    let isFit = true;
+    const maxWidth = this._bounding.width - this._bounding.pr - this._bounding.deltaL - this._bounding.translateX - this._currPos.x;
+    const maxHeight = this._bounding.height - this._bounding.pb - this._bounding.deltaT - this._bounding.translateY - this._currPos.y;
+    if (this._currSize.width > maxWidth) {
+      this._currSize.width = maxWidth;
+
+      isFit = false;
+    }
+    if (this._currSize.height > maxHeight) {
+      this._currSize.height = maxHeight;
+
+      isFit = false;
+    }
+
+    if (!isFit) {
+      this.doResize();
     }
   }
 }
