@@ -1,0 +1,27 @@
+@import "variables";
+
+.ng-resizable-table {
+  &.ng-resizable-resizing {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: col-resize;
+  }
+
+  .ng-resizable-cell,
+  .ng-resizable-header-cell {
+    position: relative;
+
+    &:not(:last-child) {
+      .ng-resizable-resize-holder {
+        cursor: col-resize;
+        position: absolute;
+        width: $handle-border-size;
+        right: $handle-border-offset;
+        height: 100%;
+        top: 0;
+        z-index: 90;
+      }
+    }
+  }
+}

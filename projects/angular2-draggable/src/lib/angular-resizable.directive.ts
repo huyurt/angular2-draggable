@@ -268,7 +268,6 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
         }
       }
     }
-
   }
 
   /** Use it to create a handle */

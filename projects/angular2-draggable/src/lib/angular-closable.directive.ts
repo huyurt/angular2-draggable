@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges } from '@angular/core';
 import { CloseHandle } from './widgets/close-handle';
 import { fromEvent, Subscription } from 'rxjs';
 
@@ -6,7 +6,7 @@ import { fromEvent, Subscription } from 'rxjs';
   selector: '[ngClosable]',
   exportAs: 'ngClosable'
 })
-export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy, AfterViewInit {
+export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy {
   private _closable = true;
   private _handleClosing: CloseHandle = null;
   private _containment: HTMLElement = null;
@@ -30,7 +30,8 @@ export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy, A
     }
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
+    this.updateClosable();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -46,10 +47,6 @@ export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy, A
       this._handleClosing.dispose();
       this._handleClosing = null;
     }
-  }
-
-  ngOnInit() {
-    this.updateClosable();
   }
 
   private updateClosable() {

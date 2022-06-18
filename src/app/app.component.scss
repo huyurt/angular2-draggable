@@ -50,3 +50,39 @@
 .ng-closable {
   z-index: 90;
 }
+
+
+.ng-resizable-table {
+  display: table;
+  table-layout: fixed;
+  //width: 100%;
+
+
+  //border-collapse: collapse;
+  //vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  //border-spacing: 0;
+  //line-height: 1.33;
+  thead {
+    display: table-header-group;
+
+    tr {
+      display: table-row;
+    }
+  }
+  tbody {
+    display: table-row-group;
+  }
+
+
+  .ng-resizable-cell,
+  .ng-resizable-header-cell {
+    position: relative;
+    overflow-x: hidden;
+    //white-space: nowrap;
+    word-break: break-word;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+    height: 30px;
+  }
+}
