@@ -46,25 +46,24 @@
          [inBounds]="true"
          [rzMinWidth]="20"
          [rzMinHeight]="20"
-         [position]="{ x: 300, y: 0 }"
+         [position]="{ x: 300, y: 300 }"
          [preventDefaultEvent]="true"
-         (rzResizing)="tableResizing($event)"
          style="width: 100%; height: 200px;"
     >
-      <table class="ng-resizable-table" #table>
+      <table ngResizableTable>
         <thead>
         <tr>
           <ng-container *ngFor="let column of displayedColumns; let i = index">
-            <th class="ng-resizable-header-cell" ngResizableTable [useWidth]="true" [index]="i"></th>
+            <th></th>
           </ng-container>
         </tr>
         </thead>
         <tbody>
-        <tr class="ng-resizable-row" *ngFor="let item of items">
-          <td class="ng-resizable-cell" ngResizableTable [index]="0">{{item.name}}</td>
-          <td class="ng-resizable-cell" ngResizableTable [index]="1">{{item.description}}</td>
-          <td class="ng-resizable-cell" ngResizableTable [index]="2">{{item.quantity}}</td>
-          <td class="ng-resizable-cell" ngResizableTable [index]="3">{{item.price}}</td>
+        <tr *ngFor="let item of items">
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.price}}</td>
         </tr>
         </tbody>
       </table>

@@ -1,27 +1,25 @@
 @import "variables";
 
 .ng-resizable-table {
-  &.ng-resizable-resizing {
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: col-resize;
-  }
+  width: 100%;
+  table-layout: fixed;
+}
 
-  .ng-resizable-cell,
-  .ng-resizable-header-cell {
-    position: relative;
+.ng-resizable-cell,
+.ng-resizable-header-cell {
+  overflow-x: hidden;
+}
 
-    &:not(:last-child) {
-      .ng-resizable-resize-holder {
-        cursor: col-resize;
-        position: absolute;
-        width: $handle-border-size;
-        right: $handle-border-offset;
-        height: 100%;
-        top: 0;
-        z-index: 90;
-      }
-    }
-  }
+.ng-resizable-resize-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.ng-resizable-resize-handle {
+  position: absolute;
+  height: 100%;
+  width: $handle-border-size;
+  cursor: col-resize;
+  z-index: 90;
 }

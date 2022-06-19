@@ -1,7 +1,7 @@
 import { Renderer2 } from '@angular/core';
 
 export class ResizeTableHandle {
-  protected _handle: Element;
+  protected _handle: HTMLElement;
   private _onResize;
 
   constructor(
@@ -10,8 +10,8 @@ export class ResizeTableHandle {
     private onMouseDown: any
   ) {
     // generate handle div
-    let handle = renderer.createElement('span');
-    renderer.addClass(handle, 'ng-resizable-resize-holder');
+    let handle = renderer.createElement('div');
+    renderer.addClass(handle, 'ng-resizable-resize-handle');
 
     // append div to parent
     if (this.parent) {
@@ -38,7 +38,7 @@ export class ResizeTableHandle {
     this._onResize = null;
   }
 
-  get el() {
+  get el(): HTMLElement {
     return this._handle;
   }
 }
