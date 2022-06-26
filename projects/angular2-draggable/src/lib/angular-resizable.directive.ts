@@ -251,7 +251,7 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
 
       for (let type of tmpHandleTypes) {
         // default handle theme: ng-resizable-$type.
-        let handle = this.createHandleByType(type, `ng-resizable-${type}`);
+        let handle = this.createHandleByType(type, `ng-resizable-${ type }`);
         if (handle) {
           this._handleType.push(type);
           this._handles[type] = handle;
@@ -463,10 +463,12 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
   private doResize() {
     const container = this.el.nativeElement;
     if (!this._direction || this._direction.n || this._direction.s || this._aspectRatio) {
-      this.renderer.setStyle(container, 'height', this._currSize.height + 'px');
+      const height = Math.floor(this._currSize.height);
+      this.renderer.setStyle(container, 'height', height + 'px');
     }
     if (!this._direction || this._direction.w || this._direction.e || this._aspectRatio) {
-      this.renderer.setStyle(container, 'width', this._currSize.width + 'px');
+      const width = Math.floor(this._currSize.width);
+      this.renderer.setStyle(container, 'width', width + 'px');
     }
     this.renderer.setStyle(container, 'left', this._currPos.x + 'px');
     this.renderer.setStyle(container, 'top', this._currPos.y + 'px');
@@ -525,7 +527,7 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
         this._adjusted = false;
 
         if ((this._direction.w || this._direction.e) &&
-            (this._currSize.width / this._aspectRatio) >= maxHeight) {
+          (this._currSize.width / this._aspectRatio) >= maxHeight) {
           const newWidth = Math.floor(maxHeight * this._aspectRatio);
 
           if (this._direction.w) {
@@ -538,7 +540,7 @@ export class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, 
         }
 
         if ((this._direction.n || this._direction.s) &&
-            (this._currSize.height * this._aspectRatio) >= maxWidth) {
+          (this._currSize.height * this._aspectRatio) >= maxWidth) {
           const newHeight = Math.floor(maxWidth / this._aspectRatio);
 
           if (this._direction.n) {

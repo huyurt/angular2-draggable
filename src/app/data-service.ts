@@ -29,5 +29,17 @@ export const items = [
     description: 'Description 5',
     quantity: 1,
     price: 0.18
+  },
+  {
+    name: 'Product 6',
+    description: 'Description 6',
+    quantity: 1,
+    price: 55.43
+  },
+  {
+    name: 'Product 7',
+    description: 'Description 7',
+    quantity: 3,
+    price: 45.34
   }
 ];

@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { ResizeTableHandle } from './widgets/resize-table-handle';
 
@@ -11,20 +11,24 @@ export class AngularResizableTableDirective implements OnInit, AfterViewInit, On
   private _handles: ResizeTableHandle[] = [];
   private startX: number;
   private startWidth: number;
-  private container: HTMLElement;
+  private readonly container: HTMLElement;
   private wrapper: HTMLElement;
-  private table: HTMLElement;
+  private readonly table: HTMLElement;
   private columns: HTMLElement[] = [];
   private draggingSub: Subscription = null;
   private index: number;
   private columnWidth: number;
   private columnNextWidth: number;
+  private readonly handleOffset = -3;
 
   /**  */
   @Input() minWidth = 20;
 
   /** Whether to prevent default event */
   @Input() preventDefaultEvent = true;
+
+  /** emitted when start resizing */
+  @Output() rzResizing = new EventEmitter();
 
   /** Disables the resizable if set to false. */
   @Input() set ngResizableTable(v: any) {
@@ -56,14 +60,12 @@ export class AngularResizableTableDirective implements OnInit, AfterViewInit, On
   }
 
   private setColumns() {
-    const columns = this.table.querySelectorAll('thead > tr > th');
-    Array.from(columns).map((column: HTMLElement) => {
-      this.columns.push(column);
-    });
+    this.columns = Array.from(this.table.querySelectorAll<HTMLElement>('thead > tr > th'));
   }
 
   private setColumnsWidth() {
-    for (const column of this.columns.filter(c => !c.style.width)) {
+    for (let i = 0; i < this.columns.length; i++) {
+      const column = this.columns[i];
       this.renderer.setStyle(column, 'width', `${ Math.round(column.getBoundingClientRect().width) }px`);
     }
   }
@@ -92,7 +94,7 @@ export class AngularResizableTableDirective implements OnInit, AfterViewInit, On
   }
 
   private createHandles() {
-    let position = 0;
+    let position = this.handleOffset;
     for (let i = 0; i < this.columns.length; i++) {
       if (i === this.columns.length - 1) {
         break;
@@ -122,6 +124,10 @@ export class AngularResizableTableDirective implements OnInit, AfterViewInit, On
     this.index = null;
     this.columnWidth = null;
     this.columnNextWidth = null;
+  }
+
+  private onResizing() {
+    this.rzResizing.emit();
   }
 
   private subscribeEvents() {
@@ -217,6 +223,7 @@ export class AngularResizableTableDirective implements OnInit, AfterViewInit, On
         this.renderer.setStyle(this._handleResizing.el, 'left', `${ newLeft }px`);
         this.renderer.setStyle(column, 'width', `${ newColumnWidth }px`);
         this.renderer.setStyle(columnNext, 'width', `${ newColumnNextWidth }px`);
+        this.onResizing();
       }
     }
   }

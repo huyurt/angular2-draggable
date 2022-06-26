@@ -16,7 +16,7 @@
          [preventDefaultEvent]="true"
          style="width: 250px; height: 100px;"
     >
-      <span>Adres Müşteri</span>
+      <span>Customer Address</span>
     </div>
     <div class="div-resize-container"
          ngResizable
@@ -33,10 +33,10 @@
          [preventDefaultEvent]="true"
          style="width: 200px; height: 300px;"
     >
-      <span>Müşteri Adı Soyadı</span>
+      <span>Customer Name Surname</span>
     </div>
 
-    <div class="div-resize-container"
+    <div #resizableTableContainer class="div-resize-container"
          ngResizable
          rzHandles="n,s,e,w,se,sw,nw"
          ngDraggable
@@ -46,16 +46,15 @@
          [inBounds]="true"
          [rzMinWidth]="20"
          [rzMinHeight]="20"
-         [position]="{ x: 300, y: 300 }"
+         [position]="{ x: 300, y: 100 }"
          [preventDefaultEvent]="true"
-         style="width: 100%; height: 200px;"
+         style="width: 790px; height: 200px;"
+         (rzResizing)="tableResizing($event)"
     >
-      <table ngResizableTable>
-        <thead>
+      <table #resizableTable ngResizableTable (rzResizing)="columnResizing()">
+        <thead style="height: 30px;">
         <tr>
-          <ng-container *ngFor="let column of displayedColumns; let i = index">
-            <th></th>
-          </ng-container>
+          <th *ngFor="let column of displayedColumns; let i = index"></th>
         </tr>
         </thead>
         <tbody>

@@ -1,7 +1,7 @@
 {
   "name": "angular2-draggable-zi",
-  "version": "2.3.9",
-  "author": "Xie, Ziyu",
+  "version": "2.4.0",
+  "author": "H.Yurt & Xie, Ziyu",
   "license": "MIT",
   "keywords": [
     "angular",
@@ -15,7 +15,7 @@
     "type": "git",
     "url": "https://github.com/huyurt/angular2-draggable.git"
   },
-  "homepage": "https://xieziyu.github.io/angular2-draggable",
+  "homepage": "https://github.com/huyurt/angular2-draggable",
   "bugs": "https://github.com/huyurt/angular2-draggable/issues",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || >=6.0.0",

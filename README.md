@@ -1,9 +1,6 @@
 # angular2-draggable
 
 <!-- Badges section here. -->
-[![npm](https://img.shields.io/npm/v/angular2-draggable.svg)][npm-badge-url]
-[![npm](https://img.shields.io/npm/dm/angular2-draggable.svg)][npm-badge-url]
-[![Build Status](https://travis-ci.org/xieziyu/angular2-draggable.svg?branch=master)][ci-url]
 
 + [Online Demo](https://xieziyu.github.io/angular2-draggable)
 + [Online Docs](https://xieziyu.github.io/angular2-draggable/api-doc)
@@ -13,9 +10,15 @@
 2. [Latest Update](#latest-update)
 3. [Installation](#installation)
 4. [Draggable](#draggable)
-4. [Resizable](#resizable)
-5. [API](#api)
-6. [Events](#events)
+5. [Resizable](#resizable)
+6. [API](#api)
+7. [Events](#events)
+
+
+
+![Demo](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUxXn_k4jNGi_UWeFAyfPXo-qNhAmcQAjPg8WUXjfHCMFeeXX0o1rzYItapwLfmEVJggM9Yc1oBtLGfXs2r26LpS3yoVZTeETSy0QMaynPRemyAcENy9v_Gh-ed3-l6RIr1-P0eKSEzzyP57NDOqRMCn-nnYirWovAFz-3wJi5Qz7RGTiN-t-SnlTwjA/s1600/angular2-draggable-zi.gif)
+
+
 
 # Getting Started
 angular2-draggable has angular directives that make the DOM element draggable and resizable.
@@ -26,26 +29,9 @@ angular2-draggable has angular directives that make the DOM element draggable an
 + `ngResizable`
     + provided since v2.0, requires Angular >= 6
 
-# Latest Update
-+ 2019.08.01: 1.5.0:
-  + **ngDraggable**: 
-    + Porting features from v2 to v1
-
-+ 2019.06.10: 2.3.2:
-  + **ngResizable**
-    + Fix [issue #164](https://github.com/xieziyu/angular2-draggable/issues/164): Resize doesn't work on Windows10 IE11 ([PR #171](https://github.com/xieziyu/angular2-draggable/pull/171) by [shumih](https://github.com/shumih]), [PR #174](https://github.com/xieziyu/angular2-draggable/pull/174) by [LiorSaadon](https://github.com/LiorSaadon]))
-
-+ 2019.05.14: 2.3.0:
-  + **ngResizable**:
-    + Fix [issue #157](https://github.com/xieziyu/angular2-draggable/issues/159): Problem resizing with containment
-    + Add `direction` property in `IResizeEvent`. 
-
-  + **ngDraggable**: 
-    + Add CSS class `ng-dragging` when dragging.
-
 # Installation
 ```
-npm install angular2-draggable --save
+npm install angular2-draggable-zi --save
 ```
 
 # Draggable
@@ -54,7 +40,7 @@ Please refer to the [demo](https://xieziyu.github.io/angular2-draggable) page.
 1. Firstly, import `AngularDraggableModule` in your app module (or any other proper angular module):
     ```typescript
     import { AngularDraggableModule } from 'angular2-draggable';
-
+    
     @NgModule({
       imports: [
         ...,
@@ -231,7 +217,3 @@ yarn install
 yarn demo
 ```
 The demo page server is listening to: http://localhost:4203
-
-
-[npm-badge-url]: https://www.npmjs.com/package/angular2-draggable
-[ci-url]: https://travis-ci.org/xieziyu/angular2-draggable

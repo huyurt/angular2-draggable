@@ -3,11 +3,23 @@
 .ng-resizable-table {
   width: 100%;
   table-layout: fixed;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.ng-resizable-header-cell {
+  vertical-align: top;
 }
 
 .ng-resizable-cell,
 .ng-resizable-header-cell {
   overflow-x: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 .ng-resizable-resize-wrapper {

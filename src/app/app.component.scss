@@ -53,6 +53,18 @@
 
 .ng-resizable-cell,
 .ng-resizable-header-cell {
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
+
+.ng-resizable-cell {
+  border-bottom: 1px solid transparent;
+}
+
+.div-resize-container:hover .ng-resizable-resize-handle {
+  border-left: 1px solid #22C39E;
+}
+
+.div-resize-container:hover .ng-resizable-cell {
+  border-color: #d2d0cf;
+}
+
