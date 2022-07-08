@@ -4,8 +4,13 @@
   position: absolute;
 }
 
+.ng-resizable:hover .ng-closable {
+  z-index: 90;
+}
+
 .ng-resizable-handle {
   position: absolute;
+  z-index: 90;
   font-size: 0.1px;
   display: block;
   -ms-touch-action: none;
@@ -86,6 +91,7 @@
 
 .ng-movable {
   position: absolute;
+  z-index: 90;
   bottom: 0;
   left: 0;
   padding: 4px 5px 5px 6px;

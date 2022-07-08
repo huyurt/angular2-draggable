@@ -2,6 +2,7 @@
 
 .ng-closable {
   position: absolute;
+  z-index: -1;
   top: 0;
   right: 0;
   padding: 4px 5px 5px 6px;

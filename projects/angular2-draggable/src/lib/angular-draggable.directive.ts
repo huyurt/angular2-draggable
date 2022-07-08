@@ -26,7 +26,6 @@ export class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, 
   private needTransform = false;
   private _bounds: HTMLElement = null;
   private _handleMoving: MoveHandle = null;
-
   private draggingSub: Subscription = null;
 
   /**

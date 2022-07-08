@@ -10,7 +10,6 @@ export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy {
   private _closable = true;
   private _handleClosing: CloseHandle = null;
   private _containment: HTMLElement = null;
-
   private draggingSub: Subscription = null;
 
   /** Whether to prevent default event */
@@ -98,14 +97,14 @@ export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy {
   private subscribeEvents() {
     this.draggingSub = fromEvent(document, 'mousemove', { passive: false }).subscribe(event => this.onMouseMove());
     this.draggingSub.add(fromEvent(document, 'touchmove', { passive: false }).subscribe(event => this.onMouseMove()));
-    this.draggingSub.add(fromEvent(document, 'mouseup', { passive: false }).subscribe(() => this.onMouseLeave()));
+    this.draggingSub.add(fromEvent(document, 'mouseup', { passive: false }).subscribe(() => this.putBack()));
     // fix for issue #164
     let isIEOrEdge = /msie\s|trident\//i.test(window.navigator.userAgent);
     if (!isIEOrEdge) {
-      this.draggingSub.add(fromEvent(document, 'mouseleave', { passive: false }).subscribe(() => this.onMouseLeave()));
+      this.draggingSub.add(fromEvent(document, 'mouseleave', { passive: false }).subscribe(() => this.putBack()));
     }
-    this.draggingSub.add(fromEvent(document, 'touchend', { passive: false }).subscribe(() => this.onMouseLeave()));
-    this.draggingSub.add(fromEvent(document, 'touchcancel', { passive: false }).subscribe(() => this.onMouseLeave()));
+    this.draggingSub.add(fromEvent(document, 'touchend', { passive: false }).subscribe(() => this.putBack()));
+    this.draggingSub.add(fromEvent(document, 'touchcancel', { passive: false }).subscribe(() => this.putBack()));
   }
 
   private unsubscribeEvents() {
@@ -116,7 +115,7 @@ export class AngularClosableDirective implements OnInit, OnChanges, OnDestroy {
   onMouseMove() {
   }
 
-  onMouseLeave() {
+  putBack() {
     if (this._handleClosing) {
       this.unsubscribeEvents();
     }

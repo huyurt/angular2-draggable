@@ -9,7 +9,8 @@ export class ResizeHandle {
     protected renderer: Renderer2,
     public type: string,
     public css: string,
-    private onMouseDown: any
+    private onMouseDown: any,
+    private onMouseUp: any = () => {}
   ) {
     // generate handle div
     let handle = renderer.createElement('div');
@@ -30,6 +31,8 @@ export class ResizeHandle {
     this._onResize = (event) => { onMouseDown(event, this); };
     handle.addEventListener('mousedown', this._onResize, { passive: false });
     handle.addEventListener('touchstart', this._onResize, { passive: false });
+    handle.addEventListener('mouseup', this.onMouseUp, {passive: false});
+    handle.addEventListener('touchend', this.onMouseUp, {passive: false});
 
     // done
     this._handle = handle;
@@ -38,6 +41,8 @@ export class ResizeHandle {
   dispose() {
     this._handle.removeEventListener('mousedown', this._onResize);
     this._handle.removeEventListener('touchstart', this._onResize);
+    this._handle.removeEventListener('mouseup', this.onMouseUp);
+    this._handle.removeEventListener('touchend', this.onMouseUp);
 
     if (this.parent) {
       this.parent.removeChild(this._handle);
